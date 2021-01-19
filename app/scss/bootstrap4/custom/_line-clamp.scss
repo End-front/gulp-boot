@@ -1,0 +1,69 @@
+.line-clamp {
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
+  line-height: $line-clamp-line-height-default;
+}
+
+@each $count, $value in $line-clamp {
+  .line-clamp-#{$count} {
+    -webkit-line-clamp: $value;
+    height: (1em * $line-clamp-line-height-default * $value);
+  }
+}
+
+@if $enable-grid-classes {
+  @each $breakpoint, $min-width-window in $grid-breakpoints {
+    @if $min-width-window != 0 {
+      @media (min-width: $min-width-window) {
+        @each $count, $value in $line-clamp {
+          .line-clamp-#{$count}-#{$breakpoint} {
+            -webkit-line-clamp: $value;
+            height: (1em * $line-clamp-line-height-default * $value);
+          }
+        }
+      }
+    }
+  } 
+} 
+
+@if $line-clamp-different-line-height {
+  @each $name, $value in $line-clamp-line-height-all {
+    $line-clamp-line-height-default: $value;
+    .line-clamp--#{$name} {
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      position: relative;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 !important;
+      line-height: $line-clamp-line-height-default;
+    }
+    
+    @each $count, $value in $line-clamp {
+      .line-clamp-#{$count}--#{$name} {
+        -webkit-line-clamp: $value;
+        height: (1em * $line-clamp-line-height-default * $value);
+      }
+    }
+    
+    @if $enable-grid-classes {
+      @each $breakpoint, $min-width-window in $grid-breakpoints {
+        @if $min-width-window != 0 {
+          @media (min-width: $min-width-window) {
+            @each $count, $value in $line-clamp {
+              .line-clamp-#{$count}-#{$breakpoint}--#{$name} {
+                -webkit-line-clamp: $value;
+                height: (1em * $line-clamp-line-height-default * $value);
+              }
+            }
+          }
+        }
+      } 
+    } 
+  }
+}

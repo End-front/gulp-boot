@@ -1,0 +1,18 @@
+<picture class="@@class">
+  @@if (media === false) {
+    <source type="image/webp" srcset="@@src.webp">
+    <source type="@@type" srcset="@@src.@@format">
+    <img src="@@src.@@format" alt="@@alt">
+  } 
+  @@if (media !== false) {
+    @@for (var i = 0; i < media.length; i++) {
+      <source type="image/webp" srcset="@@src-x`+(i+1)+`.webp" media="(`+media[i]+`)">
+    }
+    @@for (var i = 0; i < media.length; i++) {
+      <source type="@@type" srcset="@@src-x`+(i+1)+`.@@format" media="(`+media[i]+`)">
+    }
+    @@for (var i = media.length - 1; i < media.length; i++) {
+      <img class="lazyload" src="@@src-x`+(i+1)+`.@@format" alt="@@alt">
+    } 
+  }
+</picture>

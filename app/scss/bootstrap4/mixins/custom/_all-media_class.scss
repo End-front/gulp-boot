@@ -1,0 +1,23 @@
+@mixin all-different-class-media($name-class, $start-media: false, $end-media: false) {
+  $strignClasses: '';
+  @if $start-media == false OR $start-media == null {
+    $start-media: 'xs';
+  }
+  $width-start-media: map-get($grid-breakpoints, $start-media);
+  $width-end-media: 0;
+  @if $end-media == false OR $end-media == null {
+    $width-end-media: map-get($grid-breakpoints, 'max') + 10;
+  } @else {
+    $width-end-media: map-get($grid-breakpoints, $end-media)
+  }
+  @each $name, $width in $grid-breakpoints {
+    @if (($width >= $width-start-media) AND ($width < $width-end-media))  {
+      $strignClasses: $strignClasses + '.#{$name-class}' + breakpoint-infix($name) + ', '
+    }
+  } 
+  @if $strignClasses != '' {
+    #{$strignClasses} {
+      @content
+    }
+  }
+}
