@@ -47,5 +47,6 @@
 @import "mixins/float";
 
 //! My code
-@import "mixins/input-placeholder";
+@import "mixins/custom/input-placeholder";
 @import 'mixins/custom/all-media_class';
+@import 'mixins/custom/map-font-size-to-css';

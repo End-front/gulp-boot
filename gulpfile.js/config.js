@@ -56,7 +56,8 @@ global.config = {
   },
   uncssBootstrap: {
     html: [path.file.html, path.file.htmlModule, path.build.html + "**/*.html"],
-    ignore: ['']
+    ignore: [''],
+    report: false,
   },
   mediaEx: {
     output: {
@@ -64,17 +65,26 @@ global.config = {
       name: '[query].[ext]'
     },
     queries: {
-      '(min-width: 36em)' : 'media-sm', //'(min-width: 576px)': 'media-sm',
-      '(min-width: 48em)' : 'media-md', //'(min-width: 768px)': 'media-md',
-      '(min-width: 62em)' : 'media-lg', //'(min-width: 992px)': 'media-lg',
-      '(min-width: 75em)' : 'media-xl', // '(min-width: 1200px)': 'media-xl',
-      '(min-width: 88em)' : 'media-xxl', //'(min-width: 1400px)': 'media-xxl',
-      '(min-width: 100em)': 'media-max', //'(min-width: 1600px)': 'media-max',
+      '(min-width: 36rem)' : 'media-sm', //'(min-width: 576px)': 'media-sm',
+      '(min-width: 48rem)' : 'media-md', //'(min-width: 768px)': 'media-md',
+      '(min-width: 62rem)' : 'media-lg', //'(min-width: 992px)': 'media-lg',
+      '(min-width: 75rem)' : 'media-xl', // '(min-width: 1200px)': 'media-xl',
+      '(min-width: 88rem)' : 'media-xxl', //'(min-width: 1400px)': 'media-xxl',
+      '(min-width: 100rem)': 'media-max', //'(min-width: 1600px)': 'media-max',
     },
     extractAll: false,
   },
   sass: {
     outputStyle: 'expanded'
+  },
+  typeograf: {
+    locale: ['ru', 'en-US'],
+    htmlEntity: { type: 'name' }, //https://github.com/typograf/typograf/blob/dev/docs/api_nbsp.md
+    safeTags: [
+      ['<\\?php', '\\?>'],
+      ['<no-typography>', '</no-typography>']
+    ],
+
   },
   doiuse: {
     browsers: [
@@ -82,8 +92,13 @@ global.config = {
       "last 10 versions",
       "not ie 5.5-10",
       "not dead",
+      "not op_mini all",
+      "not baidu 7.12",
+      "not kaios 2.5",
+      'not safari 5.1'
     ],
-    ignore: ['rem', "css-appearance", 'fontface', "viewport-units", "flexbox", "outline", "border-radius", "calc", "transforms2d"], 
+    ignoreFiles: ['**/lib/**/*.scss'],
+    ignore: ['flexbox', 'transforms3d', 'transforms2d', 'calc', 'viewport-units'],
   },
   responsiveImg: {
     "*-rs.*": [

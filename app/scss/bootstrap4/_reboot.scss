@@ -42,6 +42,9 @@ html {
 html, body {
   overflow-x: hidden; //Чтобы работали некоторые модули и приемы в CSS 
 }
+iframe {
+  border: 0px;
+}
 
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
 // TODO: remove in v5
@@ -335,7 +338,6 @@ button {
 // Credit: https://github.com/suitcss/base/
 //! My code
 button:focus, button:active {
-  border: 0;
   outline: none !important;
 }
 
@@ -416,17 +418,13 @@ button::-moz-focus-inner,
   border-style: none;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-  box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
-  padding: 0; // 2. Remove the padding in IE 10-
-}
-
 //! My code
-input:not([type="radio"]):not([type="checkbox"]) {
+input {
   max-width: 100%;
   border: 0;
-  font-size: 1em;
+  font-size: 1rem;
+  box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
+  padding: 0; // 2. Remove the padding in IE 10-
   @include input-placeholder {
     opacity: 1; // Не через opacity делать прозрачный цвет, потому что в ie это распространяется и на сам input
   }

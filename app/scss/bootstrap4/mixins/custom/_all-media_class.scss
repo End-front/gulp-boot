@@ -6,7 +6,8 @@
   $width-start-media: map-get($grid-breakpoints, $start-media);
   $width-end-media: 0;
   @if $end-media == false OR $end-media == null {
-    $width-end-media: map-get($grid-breakpoints, 'max') + 10;
+    //TODO: Заменить max
+    $width-end-media: map-get($grid-breakpoints, breakpoint-maxName()) + 10;
   } @else {
     $width-end-media: map-get($grid-breakpoints, $end-media)
   }

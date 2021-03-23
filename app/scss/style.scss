@@ -1,5 +1,32 @@
+@import "bootstrap4/functions";
+@import 'bootstrap4/variables';
+@import 'bootstrap4/mixins';
+
 .content {
   p, span {
     max-width: 35em;
+    @include media-breakpoint-up ("sm") {
+      flex: 1 0 calc(50% - 20px);
+    }
   }
+}
+
+.dont-delete {
+  font-size: 600px;
+  @include media-breakpoint-up ("sm") {
+    font-size: 500px;
+  }
+}
+
+$font-size-h1: (
+  min: (20rem/16), 
+  sm: (24rem/16),
+  md: (28rem/16),  
+  lg: (32rem/16),  
+  xl: (38rem/16),  
+  xxl: (44rem/16),
+);
+
+h1 {
+  @include map-font-size-to-css($font-size-h1);
 }

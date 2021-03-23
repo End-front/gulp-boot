@@ -1,0 +1,7 @@
+@mixin map-font-size-to-css($map) {
+  @each $name, $size in $map {
+    @include media-breakpoint-up($name) {
+      font-size: $size;
+    }
+  }
+}

@@ -19,6 +19,10 @@
   @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
+@function breakpoint-maxName($breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  @return nth($breakpoint-names, length($breakpoint-names));
+}
+
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
 //
 //    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))

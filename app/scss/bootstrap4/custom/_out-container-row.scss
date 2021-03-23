@@ -1,48 +1,48 @@
-@each $name, $width in $grid-breakpoints {
-  @include media-breakpoint-up($name) {
-    .out-row#{breakpoint-infix($name)} {
-      flex-wrap: nowrap;
-      position: relative;
-    }
-    @include all-different-class-media('out-row', false, breakpoint-next($name)) {
-      .out-content {
-        max-width: none;
-        @if map-get($container-max-widths, $name) {
-          @if map-get($container-max-widths, $name) > $width {
-            flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)});
-          } @else {
-            flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)} + 50vw - #{map-get($container-max-widths, $name)/2});
-          }
-        } @else {
-          flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)}); 
-        }
-      }
-    }
-    @include all-different-class-media('out-row--left', false, breakpoint-next($name)) {
-      @if map-get($container-max-widths, $name) {
-        @if map-get($container-max-widths, $name) > $width  {
-          right: $grid-gutter-width/2;
-        } @else {
-          right: calc(#{ceil($grid-gutter-width/2)} + 50vw - #{map-get($container-max-widths, $name)/2});
-        }
-      } @else {
-        right: $grid-gutter-width/2;
-      }
-    }
-  }
-  @if map-get($container-max-widths, $name) AND map-get($container-max-widths, $name) > $width  {
-    @media (min-width: map-get($container-max-widths, $name)) {
-      @include all-different-class-media('out-row', false, breakpoint-next($name)) {
-        .out-content { 
-          flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)} + 50vw - #{map-get($container-max-widths, max)/2});
-        }
-      }
-      @include all-different-class-media('out-row--left', false, breakpoint-next($name)) {
-        right: calc(#{$grid-gutter-width/2} + 50vw - #{map-get($container-max-widths, max)/2});
-      }
-    }
-  }
-}
+// @each $name, $width in $grid-breakpoints {
+//   @include media-breakpoint-up($name) {
+//     .out-row#{breakpoint-infix($name)} {
+//       flex-wrap: nowrap;
+//       position: relative;
+//     }
+//     @include all-different-class-media('out-row', false, breakpoint-next($name)) {
+//       .out-content {
+//         max-width: none;
+//         @if map-get($container-max-widths, $name) {
+//           @if map-get($container-max-widths, $name) > $width {
+//             flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)});
+//           } @else {
+//             flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)} + 50vw - #{map-get($container-max-widths, $name)/2});
+//           }
+//         } @else {
+//           flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)}); 
+//         }
+//       }
+//     }
+//     @include all-different-class-media('out-row--left', false, breakpoint-next($name)) {
+//       @if map-get($container-max-widths, $name) {
+//         @if map-get($container-max-widths, $name) > $width  {
+//           right: $grid-gutter-width/2;
+//         } @else {
+//           right: calc(#{ceil($grid-gutter-width/2)} + 50vw - #{map-get($container-max-widths, $name)/2});
+//         }
+//       } @else {
+//         right: $grid-gutter-width/2;
+//       }
+//     }
+//   }
+//   @if map-get($container-max-widths, $name) AND map-get($container-max-widths, $name) > $width  {
+//     @media (min-width: map-get($container-max-widths, $name)) {
+//       @include all-different-class-media('out-row', false, breakpoint-next($name)) {
+//         .out-content { 
+//           flex-basis:calc(66.66667% + #{ceil($grid-gutter-width/2)} + 50vw - #{map-get($container-max-widths, max)/2});
+//         }
+//       }
+//       @include all-different-class-media('out-row--left', false, breakpoint-next($name)) {
+//         right: calc(#{$grid-gutter-width/2} + 50vw - #{map-get($container-max-widths, max)/2});
+//       }
+//     }
+//   }
+// }
 
 
 // Когда контейнер меньше брейкпоинта
